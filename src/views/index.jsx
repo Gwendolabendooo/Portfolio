@@ -6,7 +6,7 @@ class index extends React.Component {
     render() {
         return (
             <body className="pt-2">
-                index
+                index test
                 <Carousel/>
             </body>
         )
