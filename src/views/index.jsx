@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Carousel from '../components/carousel'
+import Cursor from '../components/cursor'
 
 class index extends React.Component {
     render() {
@@ -8,6 +9,7 @@ class index extends React.Component {
             <body className="pt-2">
                 index test
                 <Carousel/>
+                <Cursor/>
             </body>
         )
     }

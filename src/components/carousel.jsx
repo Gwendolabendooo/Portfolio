@@ -45,6 +45,7 @@ class carousel extends React.Component {
                 });
               });
         }
+        console.log(rotating)
         
         this.setState({ previous: rotating })
     }
@@ -55,7 +56,7 @@ class carousel extends React.Component {
         
         gsap.set(stage, {
           css: {
-            perspective: 10000,
+            perspective: 20000,
             transformStyle: "preserve-3d"
           }
         });
@@ -77,25 +78,25 @@ class carousel extends React.Component {
 
     render() {
         return (
-            <div className='overflow-hidden w-100 h-100'>
+            <div className='overflow-hidden w-100 h-100' style={{transform: "scale(.6)"}}>
                 <div className="demoWrapper">
                     <div className="stage">
-                        <div className="box" onClick={ (e) => this.rotate(0) }>
+                        <div className="box" style={{filter: this.state.previous === 0 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)"}} onClick={ () => this.rotate(0) }>
                             <img src={saveUs} />
                         </div>
-                        <div className="box" onClick={ (e) => this.rotate(1) }>
+                        <div className="box" style={{filter: this.state.previous === 1 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)"}} onClick={ () => this.rotate(1) }>
                             <img src={studLp} />
                         </div>
-                        <div className="box" onClick={ () => this.rotate(2) }>
+                        <div className="box" style={{filter: this.state.previous === 2 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)"}} onClick={ () => this.rotate(2) }>
                             <img src={micro} />
                         </div>
-                        <div className="box" onClick={ () => this.rotate(3) }> 
+                        <div className="box" style={{filter: this.state.previous === 3 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)"}} onClick={ () => this.rotate(3) }> 
                             <img src={micro} />
                         </div>
-                        <div className="box" onClick={ () => this.rotate(4) }>
+                        <div className="box" style={{filter: this.state.previous === 4 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)"}} onClick={ () => this.rotate(4) }>
                             <img src={micro} />
                         </div>
-                        <div className="box" onClick={ () => this.rotate(5) }>
+                        <div className="box" style={{filter: this.state.previous === 5 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)"}} onClick={ () => this.rotate(5) }>
                             <img src={studLp}/>
                         </div>
                     </div>

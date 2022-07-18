@@ -1,10 +1,13 @@
 /**Carousel**/
 html{
   height: 100%;
+  cursor: url('./img/cursor.svg'), auto;	
 }
 
 body {
     height:100vh;
+    background-color: #D9F5E8!important;
+
 }
 
 .demoWrapper {
@@ -24,6 +27,11 @@ body {
   margin-left: 220px;
   height: 700px;
   display: inline-block;
+  transition: all .7s;
+  -webkit-transition: all .7s;
+  -moz-transition: all .7s;
+  -ms-transition: all .7s;
+  -o-transition: all .7s;
 }
 
 .box > img {
