@@ -6,6 +6,7 @@ import Overlay from './Overlay';
 import saveUs from '../img/saveUs.png'
 import studLp from '../img/studLp.jpg'
 import micro from '../img/Micro.PNG'
+import Menu from './Menu';
 
 class carousel extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class carousel extends React.Component {
         this.state = {
             previous: 0,
             currentWidth: window.innerWidth,
-            currentName: "SAVE US"
+            currentName: "SAVE US",
+            data: [0, 1, 2, 3, 4, 5]
         };
 
        this.rotate = this.rotate.bind(this);
@@ -82,8 +84,9 @@ class carousel extends React.Component {
 
     render() {
         return (
-            <div className='overflow-hidden w-100 h-100 d-flex justify-content-around position-relative'>
+            <div className='overflow-hidden w-100 h-100 d-flex justify-content-center position-relative'>
                 <Overlay name={this.state.currentName}/>
+                <Menu data={this.state.data} selectedData={this.state.previous}/>
                 <div className="demoWrapper d-flex">
                     <div className="stage d-flex justify-content-center align-items-center">
                         <div className="box" style={{filter: this.state.previous === 0 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(0, "SAVE US") }>
