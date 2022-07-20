@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&display=swap');
+
 /**Carousel**/
 html{
   height: 100%;
@@ -8,6 +10,25 @@ body {
     height:100vh;
     background-color: #D9F5E8!important;
 
+}
+
+.overlay{
+  font-family: 'Archivo', sans-serif;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.miniVideo{
+  width: 200px;
+  height: 114px;
+  object-fit: cover;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .demoWrapper {
