@@ -16,19 +16,18 @@ class carousel extends React.Component {
             previous: 0,
             currentWidth: window.innerWidth,
             currentName: "SAVE US",
-            data: [0, 1, 2, 3, 4, 5]
+            data: [0, 1, 2, 3, 4, 5],
+            bgCaroussel: "#D9F5E8"
         };
 
        this.rotate = this.rotate.bind(this);
     }  
 
-    rotate(rotating, name, id){
-        console.log(this.state.previous)
+    rotate(rotating, name, bg){
         var boxes = document.querySelectorAll(".box")
 
         if (this.state.previous > rotating) {
             var pos = 60 * (this.state.previous - rotating)
-            console.log(this.state.previous ,"-", rotating)
 
             boxes.forEach(function(element, index) {
                 gsap.to(element, {
@@ -40,7 +39,6 @@ class carousel extends React.Component {
               });
         }else if (this.state.previous < rotating) {
             var pos = 60 * (rotating - this.state.previous)
-            console.log(this.state.previous ,"-", rotating)
 
             boxes.forEach(function(element, index) {
                 gsap.to(element, {
@@ -51,18 +49,23 @@ class carousel extends React.Component {
                 });
               });
         }
-        console.log(rotating)
         
-        this.setState({ previous: rotating, currentName: name })
+        this.setState({ previous: rotating, currentName: name, bgCaroussel: bg })
     }
 
     componentDidMount(){
         var boxes = document.querySelectorAll(".box")
         var stage = document.querySelector(".stage");
+
+        document.addEventListener('MenuEvent', e => {
+            console.log(e.detail.projet)
+            console.log(document.getElementById('d'+e.detail.projet))
+            document.getElementById('d'+e.detail.projet).click()
+        });
         
         gsap.set(stage, {
           css: {
-            perspective: 5000,
+            perspective: 8000,
             transformStyle: "preserve-3d"
           }
         });
@@ -72,7 +75,7 @@ class carousel extends React.Component {
             gsap.set(element, {
                 css: {
                     rotationY: index * 360 / 6,
-                    transformOrigin: "50% 50% -"+window.innerWidth / 2.5
+                    transformOrigin: "50% 50% -"+window.innerWidth / 2
                 }
             });
         });
@@ -84,27 +87,27 @@ class carousel extends React.Component {
 
     render() {
         return (
-            <div className='overflow-hidden w-100 h-100 d-flex justify-content-center position-relative'>
+            <div className='overflow-hidden w-100 h-100 d-flex justify-content-center position-relative align-items-center flex-column' style={{backgroundColor: this.state.bgCaroussel, transition: 'all .8s'}}>
                 <Overlay name={this.state.currentName}/>
                 <Menu data={this.state.data} selectedData={this.state.previous}/>
-                <div className="demoWrapper d-flex">
+                <div className="demoWrapper d-flex" style={{height: this.state.currentWidth / 2.5}}>
                     <div className="stage d-flex justify-content-center align-items-center">
-                        <div className="box" style={{filter: this.state.previous === 0 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(0, "SAVE US") }>
+                        <div className="box" id='d0' style={{filter: this.state.previous === 0 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.4)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(0, "SAVE US", "#D9F5E8") }>
                             <img src={saveUs} />
                         </div>
-                        <div className="box" style={{filter: this.state.previous === 1 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(1, "STUD LP") }>
+                        <div className="box" id='d1' style={{filter: this.state.previous === 1 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.4)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(1, "STUD LP", "rgb(66 152 227 / 53%)") }>
                             <img src={studLp} />
                         </div>
-                        <div className="box" style={{filter: this.state.previous === 2 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(2, "MAISON 3D") }>
+                        <div className="box" id='d2' style={{filter: this.state.previous === 2 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.4)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(2, "MAISON 3D", "rgb(120 51 224 / 55%)") }>
                             <img src={micro} />
                         </div>
-                        <div className="box" style={{filter: this.state.previous === 3 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(3, "MICRO GAMES") }> 
+                        <div className="box" id='d3' style={{filter: this.state.previous === 3 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.4)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(3, "MICRO GAMES", "#D9F5E8") }> 
                             <img src={micro} />
                         </div>
-                        <div className="box" style={{filter: this.state.previous === 4 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(4, "SAVE US") }>
+                        <div className="box" id='d4' style={{filter: this.state.previous === 4 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.4)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(4, "SAVE US", "#D9F5E8") }>
                             <img src={micro} />
                         </div>
-                        <div className="box" style={{filter: this.state.previous === 5 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.7)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(5, "SAVE US") }>
+                        <div className="box" id='d5' style={{filter: this.state.previous === 5 ? "blur(0px) brightness(1)": "blur(6px) brightness(0.4)", width: this.state.currentWidth / 2.5, height: this.state.currentWidth / 3.75}} onClick={ () => this.rotate(5, "SAVE US", "#D9F5E8") }>
                             <img src={studLp}/>
                         </div>
                     </div>

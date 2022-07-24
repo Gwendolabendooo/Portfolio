@@ -10,7 +10,6 @@ const Cursor = ({ name }) => {
             x: event.clientX,
             y: event.clientY,
           });
-          console.log(event)
         };
         window.addEventListener('mousemove', handleWindowMouseMove);
     

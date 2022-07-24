@@ -6,8 +6,7 @@ import Cursor from '../components/cursor'
 class index extends React.Component {
     render() {
         return (
-            <body className="pt-2">
-                index test
+            <body>
                 <Carousel/>
                 <Cursor/>
             </body>
